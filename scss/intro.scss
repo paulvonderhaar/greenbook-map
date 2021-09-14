@@ -1,0 +1,92 @@
+@import "base";
+
+@import "mixins";
+@import "variables";
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  max-width: 960px;
+  margin: $headerHeight auto 0;
+  padding: 1em;
+  @include box-sizing();
+}
+
+h1, h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+h1 {
+  font-size: 3em;
+  small {
+    color: $grayLight;
+    font-size: 0.5em;
+    line-height: 2;
+  }
+}
+h2 {
+  margin-top: 2em;
+}
+li {
+  font-size: 1.4em;
+  line-height: 1.6;
+}
+
+.button-group {
+  margin-bottom: 3em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.caption {
+  text-align: right;
+  margin: 0.2em 0 0;
+  font-size: 1em;
+}
+
+.pull-left {
+  img {
+    width: auto;
+  }
+  .caption {
+    text-align: left;
+    max-width: 220px;
+  }
+}
+
+.quote {
+  margin: 1em 2em;
+  padding: 0.2em 1em;
+  background: rgba($grayDarkest, 0.5);
+  color: $grayLightest;
+  @include box-sizing();
+}
+
+.card {
+
+  > div {
+    background: $beige url(../img/bg_light_small.jpg) center no-repeat;
+    background-size: cover;
+    color: $black;
+    padding: 0.5em;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  img {
+    border: 1px solid $grayLight;
+  }
+}
+
+.main {
+  margin: 1.2em 0 3em;
+}

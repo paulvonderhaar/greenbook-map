@@ -1,0 +1,98 @@
+@import "base";
+
+@import "mixins";
+@import "variables";
+
+.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-select {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  text-align: center;
+  z-index: 1000;
+
+  .select-group {
+    border: 1px solid $grayLight;
+  }
+
+  .layer-select,
+  .year-select {
+    display: block;
+    cursor: pointer;
+    background: $grayLighter;
+    color: $grayDarkest;
+    text-align: center;
+    padding: 0.5em 0;
+    width: 160px;
+
+    &:hover {
+      background: lighten($grayLighter, 7%);
+    }
+
+    &.active {
+      background: #56b881;
+      color: $white;
+    }
+  }
+
+  label {
+    display: block;
+    margin: 1em 0 0.2em;
+    color: $black;
+    font-weight: bold;
+  }
+}
+
+.infobox {
+  width: 420px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 0.5em 0.6em 0.3em;
+  background: $beige url(../img/bg_light_small.jpg) center no-repeat;
+  background-size: cover;
+  color: $black;
+  border: 1px solid $grayLight;
+  z-index: 1000;
+  @include box-sizing();
+
+  h2 {
+    margin: 0 0 0.4em;
+    color: $greenDark;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    small {
+      font-size: 0.5em;
+      color: rgba($greenDark, 0.5);
+    }
+  }
+
+  a {
+    color: $green;
+
+    &.button {
+      color: $white;
+      font-size: 1em;
+      margin-left: 0.5em;
+    }
+  }
+  p {
+    font-size: 14px;
+    margin: 0 0 0.2em 0;
+    line-height: 1.2;
+  }
+}
+
+.leaflet-popup-content img {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,304 @@
+@import "base";
+
+@import "mixins";
+@import "variables";
+
+form {
+  font-size: 2em;
+
+  label {
+    display: block;
+    font-size: 0.8em;
+  }
+  input {
+    display: block;
+    margin: 0.3em auto 0.7em;
+    padding: 0.2em 0.2em 0.05em;
+    color: $grayDarkest;
+    outline: none;
+  }
+  .select-group {
+    margin: 0.3em 0 0.7em;
+    text-align: center;
+
+    .select.button {
+      display: inline-block;
+      background: $grayLight;
+      font-size: 0.7em;
+
+      &:hover {
+        background: lighten($grayLight, 8%);
+      }
+      &.active {
+        background: $green;
+        cursor: default;
+        &:before {
+          font-size: 0.8em;
+          content: '✓ ';
+        }
+      }
+    }
+  }
+  button {
+    &:before {
+      content: 'Map A Trip';
+    }
+    &.loading:before {
+      content: 'Loading...';
+      opacity: 0.5;
+    }
+  }
+}
+
+.map,
+.path {
+  position: absolute;
+  width: percentage(2/3);
+  height: 100%;
+  top: 0;
+  left: percentage(1/3);
+}
+.path {
+  width: percentage(1/3);
+  left: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  @include box-sizing();
+
+  .title {
+    padding: 20px;
+    background: $beige url(../img/bg_light_small.jpg) center no-repeat;
+    background-size: cover;
+    color: $black;
+    @include box-sizing();
+
+    h2 {
+      text-transform: uppercase;
+      color: $greenDark;
+      text-align: center;
+      letter-spacing: 4px;
+
+      small {
+        font-size: 0.5em;
+        color: rgba($greenDark, 0.5);
+      }
+    }
+
+    p {
+      font-size: 1em;
+      margin: 0.4em 0;
+    }
+
+    .button-group .button {
+      font-size: 1em;
+      margin-top: 0;
+      padding: 0.2em 0.6em 0em;
+    }
+
+    *:first-child {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  button {
+    margin: 20px 0 0 20px;
+  }
+}
+
+.path-list-wrapper {
+  position: relative;
+
+  .path-line {
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    top: 0;
+    left: 26px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 90px;
+    @include box-sizing();
+
+    &:before {
+      content: ' ';
+      border-left: 3px dashed rgba($red, 0.4);
+      flex: 1;
+    }
+  }
+}
+
+.path-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: block;
+    margin: 0;
+    padding: 20px 20px 20px 60px;
+    border-bottom: 1px dotted $grayDark;
+    position: relative;
+    @include transition(background 0.5s);
+
+    &:before {
+      display: block;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: "\f10c";
+      z-index: 10;
+      background: $grayDarker url(../img/bg.jpg) repeat;
+    }
+
+    &.hotel:before {
+      content: "\f236";
+    }
+
+    &.restaurant:before {
+      content: "\f0f5";
+    }
+
+    &:hover {
+      &,
+      &:before {
+        background: lighten($grayDarkest, 8%);
+      }
+    }
+
+    .name {
+      font-size: 1.4em;
+    }
+
+    .address {
+      font-size: 1.1em;
+      padding: 0.4em 0 0.6em;
+      color: $grayLight;
+    }
+
+    .type {
+      font-size: 0.9em;
+      font-style: italic;
+      color: $gray;
+    }
+  }
+}
+
+.modal {
+  background: rgba($grayDarkest, 0.95);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  overflow: auto;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  .modal-content {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    color: $white;
+    display: none;
+    @include transform(translateY(-50%));
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .form-modal {
+    &.loading {
+      text-align: center;
+      font-size: 2em;
+
+      > * {
+        display: none;
+      }
+
+      &:before {
+        content: 'Loading...';
+        display: inline-block;
+      }
+    }
+
+    button {
+      font-size: 0.8em;
+    }
+  }
+
+  p.intro {
+    max-width: 500px;
+    margin: 0 auto 1em;
+    padding: 1em 0.5em;
+    font-size: 1.2em;
+    line-height: 1.2;
+    background: $beige url(../img/bg_light_small.jpg) center no-repeat;
+    background-size: cover;
+    color: $black;
+    @include box-sizing();
+
+    a {
+      color: $green;
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: $headerHeight + 10px;
+    right: 20px;
+    color: $greenLight;
+    font-weight: bold;
+    font-size: 1.6em;
+  }
+}
+
+.infobox {
+  width: 440px;
+  position: absolute;
+  bottom: 25px;
+  right: 10px;
+  padding: 0.5em 0.6em 0.3em;
+  background: $beige url(../img/bg_light_small.jpg) center no-repeat;
+  background-size: cover;
+  color: $black;
+  border: 1px solid $grayLight;
+  z-index: 1000;
+  @include box-sizing();
+
+  a {
+    color: $green;
+    &.button {
+      color: $white;
+      font-size: 0.9em;
+    }
+  }
+  p {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.2;
+  }
+}
