@@ -58,9 +58,9 @@
           <label>Choose a year</label>
           <div id="select-year" class="select-group"></div>
           <label>Enter an address U.S. address</label>
-          <input id="origin" type="text" value="New York, NY" />
+          <input id="origin" type="text" value="" />
           <label>Enter a destination address</label>
-          <input id="destination" type="text" value="Atlanta, GA" />
+          <input id="destination" type="text" value="" />
           <button id="path-form-submit" type="submit"></button>
         </form>
       </div>
@@ -100,7 +100,7 @@
 (function() {
 
     const idleDurationSecs = 300;    // X number of seconds
-    const redirectUrl = '/';  // Redirect idle users to this URL
+    const redirectUrl = '/index';  // Redirect idle users to this URL
     let idleTimeout; // variable to hold the timeout, do not modify
 
     const resetIdleTimeout = function() {
