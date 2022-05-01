@@ -380,19 +380,19 @@ form input {
   outline: none;
 }
 form .select-group {
-  margin: 0.3em 0 0.7em;
+  margin: 0.1em 0 0.1em;
   text-align: center;
 }
 form .select-group .select.button {
   display: inline-block;
-  background: #908B85;
-  font-size: 0.7em;
+  background: #0000ffff ;
+  font-size: 0.0em;
 }
 form .select-group .select.button:hover {
-  background: #a39f9a;
+  background: #0000ffff ;
 }
 form .select-group .select.button.active {
-  background: #357d48;
+  background: #0000ffff ;
   cursor: default;
 }
 form .select-group .select.button.active:before {
