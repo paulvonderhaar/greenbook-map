@@ -1,22 +1,25 @@
 <style>
 #myVideo {
+  bottom: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
   position: fixed;
   right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  top: 0;
 }
 
 /* Add some content at the bottom of the video/page */
 .content {
-  position: fixed;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
   justify-content: center;
+  left: 0;
+  padding: 20px;
+  position: fixed;
   text-align: center;
+  top: 50%;
+  width: 100%;
 }
 
 /* Style the button used to pause/play the video */
@@ -37,9 +40,10 @@
 #myBtn:hover {
   background: #ddd;
   color: black;
-} 
-</style>
+}
 
+</style>
+<link rel="stylesheet" href="css/triplanding.css">
 
  <!-- The video, the video is 30 seconds long, but only plays a short 5 second animation -->
 <video autoplay muted loop id="myVideo">
@@ -48,9 +52,15 @@
 
 <!-- Optional: some overlay text to describe the video -->
 <div class="content">
-  <h1>Click Here to Start your Journey</h1>
+  <!-- <h1>Click Here to Start your Journey</h1> -->
   <!-- Use a button to pause/play the video with JavaScript -->
-<form action="trip.html">
-    <input class="button" type="submit" value="Click here to Begin" />
-</form>
+  <!-- <form action="trip.html">
+      <input class="button" type="submit" value="Click here to Begin" />
+  </form> -->
+
+  <form id="path-form" class="form choose-direction" action="trip.html">
+    <input id="origin" type="text" value="" />
+    <input id="destination" type="text" value="" />
+    <button id="path-form-submit" type="submit"></button>
+  </form>
 </div> 
