@@ -60,3 +60,10 @@ form button.loading:before {
   font-family: "Josefin Sans", sans-serif;
   margin-top: 40px;
 }
+
+.hand-icon {
+  position: absolute;
+  bottom: -15px;
+  left: 54%;
+  width: 126px;
+}
