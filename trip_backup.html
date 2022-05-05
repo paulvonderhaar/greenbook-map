@@ -31,21 +31,9 @@
 
   <script src="js/vendor/leaflet-mapbox-gl.js"></script>
 
-  <style>
-    #myVideo {
-      bottom: 0;
-      left: 0;
-      min-height: 100%;
-      min-width: 100%;
-      position: fixed;
-      right: 0;
-      top: 0;
-    }
-  </style>
-
-  <link rel="stylesheet" href="css/triplanding.css">
 </head>
 <body>
+
   <div id="main" class="container">
     <div id="map" class="map"></div>
     <div id="path" class="path">
@@ -64,15 +52,13 @@
       </div>
     </div>
     <div id="modal" class="modal active">
-      <!-- The video background in the modal -->
-      <video autoplay muted loop id="myVideo">
-        <source src="Take_2step.mp4" type="video/mp4">
-      </video>
-
       <div id="path-form-modal" class="modal-content form-modal loading active">
-        <form id="path-form" class="form choose-direction">
+        <p class="intro">The <a href="http://digitalcollections.nypl.org/collections/the-green-book" target="_blank">Green Book</a> was a travel guide published between 1936 and 1966 that listed hotels, restaurants, bars, gas stations, etc. where black travelers would be welcome. Using data extracted from the books themselves, we welcome you to visualize a trip one may have taken using these books. <a href="index.html">Go Back</a></p>
+        <form id="path-form" class="form">
           <div id="select-year" class="select-group"></div>
+          <label>Enter an Origin in the  U.S. City, County, or Address</label>
           <input id="origin" type="text" value="" />
+          <label>Enter a Destination in the U.S. City, County, or Address</label>
           <input id="destination" type="text" value="" />
           <button id="path-form-submit" type="submit"></button>
         </form>
@@ -80,15 +66,15 @@
       <a href="#close" class="modal-close">x</a>
     </div>
     <div id="map-info" class="infobox">
-      <p>Tap an icon to see a photo. Tap the photo to see a larger photo and more details. The map path uses addresses from the Green Book to look for a restaurant every <strong><span class="data-restaurant-miles">--</span> miles</strong> and lodging every <strong><span class="data-hotel-miles">--</span> miles</strong>.</p>
+      <p>This map is currently using <span class="data-count">--</span> addresses extracted from <a href="#" class="data-link" target="_blank">--</a>. The path tries to look for a restaurant every <strong><span class="data-restaurant-miles">--</span> miles</strong> and a lodging every <strong><span class="data-hotel-miles">--</span> miles</strong>.</p>
       <p class="button-group">
       </p>
     </div>
   </div>
-  <!-- 
+
   <div class="nypl-header">
   </div>
-  -->
+
   <script src="js/vendor/jquery-1.11.3.min.js"></script>
   <script src="js/vendor/underscore-min.js"></script>
   <script src="js/config.js"></script>
@@ -110,31 +96,32 @@
   </script>
 
   <script>
-  (function() {
+(function() {
 
-      const idleDurationSecs = 300;    // X number of seconds
-      const redirectUrl = '/index';  // Redirect idle users to this URL
-      let idleTimeout; // variable to hold the timeout, do not modify
+    const idleDurationSecs = 300;    // X number of seconds
+    const redirectUrl = '/index';  // Redirect idle users to this URL
+    let idleTimeout; // variable to hold the timeout, do not modify
 
-      const resetIdleTimeout = function() {
+    const resetIdleTimeout = function() {
 
-          // Clears the existing timeout
-          if(idleTimeout) clearTimeout(idleTimeout);
+        // Clears the existing timeout
+        if(idleTimeout) clearTimeout(idleTimeout);
 
-          // Set a new idle timeout to load the redirectUrl after idleDurationSecs
-          idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
-      };
+        // Set a new idle timeout to load the redirectUrl after idleDurationSecs
+        idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+    };
 
-      // Init on page load
-      resetIdleTimeout();
+    // Init on page load
+    resetIdleTimeout();
 
-      // Reset the idle timeout on any of the events listed below
-      ['click', 'touchstart', 'mousemove'].forEach(evt => 
-          document.addEventListener(evt, resetIdleTimeout, false)
-      );
+    // Reset the idle timeout on any of the events listed below
+    ['click', 'touchstart', 'mousemove'].forEach(evt => 
+        document.addEventListener(evt, resetIdleTimeout, false)
+    );
 
-  })();
-  </script>
+})();
+</script>
+
 
 </body>
 </html>
